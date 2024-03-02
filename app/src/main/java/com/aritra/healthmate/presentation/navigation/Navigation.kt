@@ -6,6 +6,7 @@ import androidx.wear.compose.navigation.SwipeDismissableNavHost
 import androidx.wear.compose.navigation.composable
 import com.aritra.healthmate.presentation.screens.CalorieTrackingScreen
 import com.aritra.healthmate.presentation.screens.HomeScreen
+import com.aritra.healthmate.presentation.screens.StatsScreen
 import com.aritra.healthmate.presentation.screens.WaterTrackingScreen
 
 @Composable
@@ -19,6 +20,10 @@ fun Navigation(
         composable("home_screen") {
             HomeScreen { selected ->
                 when(selected) {
+                    "Stats" -> {
+                        navController.navigate("stats_screen")
+                    }
+
                     "Add Water" -> {
                         navController.navigate("water_tracking_screen")
                     }
@@ -28,6 +33,10 @@ fun Navigation(
                     }
                 }
             }
+        }
+
+        composable("stats_screen") {
+            StatsScreen()
         }
 
         composable("water_tracking_screen") {
