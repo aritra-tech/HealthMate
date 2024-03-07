@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight.Companion.Bold
+import androidx.compose.ui.text.font.FontWeight.Companion.Medium
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -55,13 +56,13 @@ fun WaterTrackingScreen() {
 
             Text(
                 text = "Water",
-                style = TextStyle(fontWeight = Bold)
+                style = TextStyle(fontWeight = Medium, fontSize = 20.sp)
             )
 
             Spacer(modifier = Modifier.height(5.dp))
             Text(
                 text = "Liters",
-                style = TextStyle(color = Color(0xFF949aa1))
+                style = TextStyle(color = Color(0xFF949aa1), fontSize = 14.sp)
             )
 
             Spacer(modifier = Modifier.height(10.dp))
@@ -86,9 +87,9 @@ fun WaterTrackingScreen() {
                 }
             ) {
                 Icon(
-                    modifier = Modifier.size(24.dp),
+                    modifier = Modifier.size(25.dp),
                     imageVector = Icons.Rounded.Add,
-                    contentDescription = "triggers phone action",
+                    contentDescription = null,
                     tint = Color(0xFFf6f6f6)
                 )
             }
