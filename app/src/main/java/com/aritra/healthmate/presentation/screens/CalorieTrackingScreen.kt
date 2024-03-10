@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,6 +30,7 @@ import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.Icon
 import androidx.wear.compose.material.Text
+import com.aritra.healthmate.R
 
 @Composable
 fun CalorieTrackingScreen() {
@@ -54,7 +56,7 @@ fun CalorieTrackingScreen() {
             Spacer(modifier = Modifier.height(30.dp))
 
             Text(
-                text = "Calories",
+                text = stringResource(R.string.calories),
                 style = TextStyle(fontSize = 10.sp)
             )
 
@@ -70,7 +72,7 @@ fun CalorieTrackingScreen() {
             Spacer(modifier = Modifier.height(5.dp))
 
             Text(
-                "/ 100 kcal",
+                stringResource(R.string._100_kcal),
                 textAlign = TextAlign.Center,
                 fontSize = 12.sp,
             )
@@ -104,7 +106,7 @@ fun CalorieTrackingScreen() {
             strokeWidth = 10.dp,
             progress = animateProgress / 100,
             indicatorColor = Color(0xFF6bb300),
-            trackColor = Color.LightGray
+            trackColor = Color.White
         )
     }
 

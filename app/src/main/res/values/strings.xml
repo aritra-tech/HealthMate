@@ -5,4 +5,9 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">From the Square world,\nHello, %1$s!</string>
+    <string name="calories">Calories</string>
+    <string name="_100_kcal">/ 100 kcal</string>
+    <string name="water">Water</string>
+    <string name="liters">Liters</string>
+    <string name="_10_0_l">" / 10.0 L"</string>
 </resources>
