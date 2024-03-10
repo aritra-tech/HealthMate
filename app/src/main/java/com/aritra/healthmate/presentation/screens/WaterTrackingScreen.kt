@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material.icons.rounded.AddTask
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
@@ -86,14 +88,24 @@ fun WaterTrackingScreen() {
                 ),
                 onClick = {
                     waterProgress += 1f
-                }
+                },
+                enabled = waterProgress < 10f
             ) {
-                Icon(
-                    modifier = Modifier.size(25.dp),
-                    imageVector = Icons.Rounded.Add,
-                    contentDescription = null,
-                    tint = Color(0xFFf6f6f6)
-                )
+                if (waterProgress < 10) {
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        imageVector = Icons.Rounded.Add,
+                        contentDescription = null,
+                        tint = Color(0xFFf6f6f6)
+                    )
+                } else {
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        imageVector = Icons.Default.Check,
+                        contentDescription = null,
+                        tint = Color(0xFFf6f6f6)
+                    )
+                }
             }
         }
 

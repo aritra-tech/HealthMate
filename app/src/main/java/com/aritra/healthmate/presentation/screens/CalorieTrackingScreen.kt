@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -87,14 +88,23 @@ fun CalorieTrackingScreen() {
                 ),
                 onClick = {
                     calorieProgress += 10f
-                }
+                },
+                enabled = calorieProgress < 100f
             ) {
-                Icon(
-                    modifier = Modifier.size(25.dp),
-                    imageVector = Icons.Rounded.Add,
-                    contentDescription = null,
-                    tint = Color.Black
-                )
+                if (calorieProgress < 100) {
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        imageVector = Icons.Rounded.Add,
+                        contentDescription = null,
+                        tint = Color.Black
+                    )
+                } else {
+                    Icon(
+                        modifier = Modifier.size(25.dp),
+                        imageVector = Icons.Default.Check,
+                        contentDescription = null,
+                    )
+                }
             }
         }
 
