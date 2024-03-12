@@ -1,5 +1,6 @@
 package com.aritra.healthmate.presentation.screens
 
+import android.text.format.DateFormat
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Box
@@ -30,8 +31,14 @@ import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.ButtonDefaults
 import androidx.wear.compose.material.CircularProgressIndicator
 import androidx.wear.compose.material.Icon
+import androidx.wear.compose.material.Scaffold
 import androidx.wear.compose.material.Text
+import androidx.wear.compose.material.TimeText
+import androidx.wear.compose.material.TimeTextDefaults
+import androidx.wear.compose.material.Vignette
+import androidx.wear.compose.material.VignettePosition
 import com.aritra.healthmate.R
+import java.util.Locale
 
 @Composable
 fun CalorieTrackingScreen() {
@@ -46,78 +53,91 @@ fun CalorieTrackingScreen() {
         animationSpec = tween(500)
     )
 
-    Box(
-        modifier = Modifier.fillMaxSize()
+    Scaffold(
+        timeText = {
+            TimeText(
+                timeSource = TimeTextDefaults.timeSource(
+                    DateFormat.getBestDateTimePattern(Locale.getDefault(), "hh:mm")
+                )
+            )
+        },
+        vignette = {
+            Vignette(vignettePosition = VignettePosition.TopAndBottom)
+        }
     ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Text(
-                text = stringResource(R.string.calories),
-                style = TextStyle(fontSize = 10.sp)
-            )
-
-            Spacer(modifier = Modifier.height(10.dp))
-
-            Text(
-                String.format("%.1f ", animateProgress),
-                textAlign = TextAlign.Center,
-                fontSize = 25.sp,
-                fontWeight = FontWeight.Medium
-            )
-
-            Spacer(modifier = Modifier.height(5.dp))
-
-            Text(
-                stringResource(R.string._100_kcal),
-                textAlign = TextAlign.Center,
-                fontSize = 12.sp,
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Button(
-                modifier = Modifier
-                    .size(ButtonDefaults.DefaultButtonSize),
-                colors = ButtonDefaults.primaryButtonColors(
-                    backgroundColor = Color(0xFF80ff80)
-                ),
-                onClick = {
-                    calorieProgress += 10f
-                },
-                enabled = calorieProgress < 100f
+            Column(
+                modifier = Modifier.fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (calorieProgress < 100) {
-                    Icon(
-                        modifier = Modifier.size(25.dp),
-                        imageVector = Icons.Rounded.Add,
-                        contentDescription = null,
-                        tint = Color.Black
-                    )
-                } else {
-                    Icon(
-                        modifier = Modifier.size(25.dp),
-                        imageVector = Icons.Default.Check,
-                        contentDescription = null,
-                    )
+
+                Spacer(modifier = Modifier.height(30.dp))
+
+                Text(
+                    text = stringResource(R.string.calories),
+                    style = TextStyle(fontSize = 10.sp)
+                )
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Text(
+                    String.format("%.1f ", animateProgress),
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp,
+                    fontWeight = FontWeight.Medium
+                )
+
+                Spacer(modifier = Modifier.height(5.dp))
+
+                Text(
+                    stringResource(R.string._100_kcal),
+                    textAlign = TextAlign.Center,
+                    fontSize = 12.sp,
+                )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Button(
+                    modifier = Modifier
+                        .size(ButtonDefaults.DefaultButtonSize),
+                    colors = ButtonDefaults.primaryButtonColors(
+                        backgroundColor = Color(0xFF80ff80)
+                    ),
+                    onClick = {
+                        calorieProgress += 10f
+                    },
+                    enabled = calorieProgress < 100f
+                ) {
+                    if (calorieProgress < 100) {
+                        Icon(
+                            modifier = Modifier.size(25.dp),
+                            imageVector = Icons.Rounded.Add,
+                            contentDescription = null,
+                            tint = Color.Black
+                        )
+                    } else {
+                        Icon(
+                            modifier = Modifier.size(25.dp),
+                            imageVector = Icons.Default.Check,
+                            contentDescription = null,
+                        )
+                    }
                 }
             }
+
+            CircularProgressIndicator(
+                startAngle = 295.5f,
+                endAngle = 245.5f,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(3.dp),
+                strokeWidth = 5.dp,
+                progress = animateProgress / 100,
+                indicatorColor = Color(0xFF6bb300),
+                trackColor = Color.White
+            )
         }
-
-        CircularProgressIndicator(
-            startAngle = 270f,
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(3.dp),
-            strokeWidth = 10.dp,
-            progress = animateProgress / 100,
-            indicatorColor = Color(0xFF6bb300),
-            trackColor = Color.White
-        )
     }
-
 }
