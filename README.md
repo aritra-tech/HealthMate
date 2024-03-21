@@ -26,3 +26,8 @@ A simple Android app for Wear OS build using Jetpack Compose that help us to tra
 | 🤖 Kotlin              | [Kotlin](https://kotlinlang.org/)                                                                                      |
 | 💚 Jetpack Compose     | [Compose](https://developer.android.com/jetpack/compose)                                                               |
 | 💚 Compose for Wear OS | [Compose Wear OS](https://developer.android.com/training/wearables/compose)                                            |
+
+## ✍️ Technical Content
+
+If you're interested in building this project from scratch, check out the blog posts below:
+- [Design System for WearOS](https://blog.stackademic.com/build-wear-os-application-using-jetpack-compose-part-1-design-system-for-wear-os-3e481f4c9d50)
